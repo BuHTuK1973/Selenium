@@ -17,77 +17,78 @@ public class CheckAnswersOfMainQuestionsTest {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
         driver.get(HomePageScooter.URL);
+        driver.manage().deleteAllCookies();
     }
 
     @Test
-    public void checkAnswerOfQuestionOne() {
+    public void checkFirstDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
-        String actualResult = homePageScooter.isTextOfAnswerOneMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionOneMatches(driver);
         Assert.assertEquals("Текст вопроса №1 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 
     @Test
-    public void checkAnswerOfQuestionTwo() {
+    public void checkSecondDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.";
-        String actualResult = homePageScooter.isTextOfAnswerTwoMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionTwoMatches(driver);
         Assert.assertEquals("Текст вопроса №2 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 
     @Test
-    public void checkAnswerOfQuestionThree() {
+    public void checkThirdDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.";
-        String actualResult = homePageScooter.isTextOfAnswerThreeMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionThreeMatches(driver);
         Assert.assertEquals("Текст вопроса №3 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 
     @Test
-    public void checkAnswerOfQuestionFour() {
+    public void checkFourthDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Только начиная с завтрашнего дня. Но скоро станем расторопнее.";
-        String actualResult = homePageScooter.isTextOfAnswerFourMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionFourMatches(driver);
         Assert.assertEquals("Текст вопроса №4 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 
     @Test
-    public void checkAnswerOfQuestionFive() {
+    public void checkFifthDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.";
-        String actualResult = homePageScooter.isTextOfAnswerFiveMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionFiveMatches(driver);
         Assert.assertEquals("Текст вопроса №5 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 
     @Test
-    public void checkAnswerOfQuestionSix() {
+    public void checkSixthDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.";
-        String actualResult = homePageScooter.isTextOfAnswerSixMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionSixMatches(driver);
         Assert.assertEquals("Текст вопроса №6 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 
     @Test
-    public void checkAnswerOfQuestionSeven() {
+    public void checkSeventhDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.";
-        String actualResult = homePageScooter.isTextOfAnswerSevenMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionSevenMatches(driver);
         Assert.assertEquals("Текст вопроса №7 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 
     @Test
-    public void checkAnswerOfQuestionEight() {
+    public void checkEighthDropDownMenuOfTheBlockImportantQuestions() {
 
         HomePageScooter homePageScooter = new HomePageScooter();
         String expectedResult = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";
-        String actualResult = homePageScooter.isTextOfAnswerEightMatches(driver);
+        String actualResult = homePageScooter.textOfAnswerTheQuestionEightMatches(driver);
         Assert.assertEquals("Текст вопроса №8 не соответствует ожидаемому.", expectedResult, actualResult);
     }
 

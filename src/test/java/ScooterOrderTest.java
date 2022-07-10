@@ -1,12 +1,14 @@
 import PageObject.HomePageScooter;
+import org.hamcrest.MatcherAssert;
+import static org.hamcrest.CoreMatchers.containsString;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 
 public class ScooterOrderTest {
@@ -21,7 +23,7 @@ public class ScooterOrderTest {
     }
 
     @Test
-    public void checkWindowOfOrderSuccess() {
+    public void fillInTheDataAndComleteTheFirstOrder() {
         //Данные для формы 1
         String name = "Антон";
         String surname = "Андреевич";
@@ -39,11 +41,11 @@ public class ScooterOrderTest {
        HomePageScooter homePageScooter = new HomePageScooter();
         String actualResult = homePageScooter.clickBtnHeaderOrder(driver).orderScooter(driver, name, surname, city, stationNumber, phone,
                 dayOfArrival, comment, amountOfDays, colorNumber);
-        Assert.assertEquals("Заголовок окна успешного офрмления заказа должен не соответвует ожидаемому. Ожидаемый заголовок: Заказ оформлен", expectedResult, actualResult);
+        MatcherAssert.assertThat("Заголовок окна успешного офрмления заказа должен не соответвует ожидаемому. Ожидаемый заголовок: Заказ оформлен", actualResult, containsString(expectedResult));
     }
 
     @Test
-    public void checkWindowOfOrderSuccessSecond() {
+    public void fillInTheDataAndComleteTheSecondOrder() {
         //Данные для формы 1
         String name = "Андрей";
         String surname = "Вячеславович";
@@ -61,7 +63,7 @@ public class ScooterOrderTest {
         HomePageScooter homePageScooter = new HomePageScooter();
         String actualResult = homePageScooter.clickBtnMiddleOrder(driver).orderScooter(driver, name, surname, city, stationNumber, phone,
                 dayOfArrival, comment, amountOfDays, colorNumber);
-        Assert.assertEquals("Заголовок окна успешного офрмления заказа должен не соответвует ожидаемому", expectedResult, actualResult);
+        MatcherAssert.assertThat("Заголовок окна успешного офрмления заказа должен не соответвует ожидаемому. Ожидаемый заголовок: Заказ оформлен", actualResult, containsString(expectedResult));
     }
 
     @After
