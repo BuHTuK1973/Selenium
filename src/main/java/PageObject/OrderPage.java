@@ -48,7 +48,7 @@ public class OrderPage {
     }
 
     //Заполнить поля раздела "Для кого самокат"
-    public void completeFirstForm(WebDriver driver, String name, String surname, String city, int stationNumber, String phone) {
+    public void completeFormOfTheSectionForWhomTheScooter(WebDriver driver, String name, String surname, String city, int stationNumber, String phone) {
         driver.findElement(inputName).sendKeys(name);
         driver.findElement(inputSurname).sendKeys(surname);
         driver.findElement(inputAddress).sendKeys(city);
@@ -56,8 +56,8 @@ public class OrderPage {
         driver.findElement(inputPhone).sendKeys(phone);
     }
 
-    public void finishOrderFormOne(WebDriver driver, String name, String surname, String city, int stationNumber, String phone) {
-        completeFirstForm(driver, name, surname, city, stationNumber, phone);
+    public void finishOrderFormOfTheSectionForWhomTheScooter(WebDriver driver, String name, String surname, String city, int stationNumber, String phone) {
+        completeFormOfTheSectionForWhomTheScooter(driver, name, surname, city, stationNumber, phone);
         driver.findElement(btnNext).click();
     }
 
@@ -79,7 +79,7 @@ public class OrderPage {
     }
 
     //Заполняем форму 2 значениями
-    public void completeSecondForm(WebDriver driver, String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
+    public void completeFormAboutRent(WebDriver driver, String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
         driver.findElement(inputWhen).sendKeys(dayOfArrival);
         driver.findElement(inputWhen).sendKeys(Keys.ESCAPE);
         driver.findElement(inputComment).sendKeys(comment);
@@ -88,16 +88,16 @@ public class OrderPage {
     }
 
     //заказать
-    public void finishOrderFormTwo(WebDriver driver, String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
-        completeSecondForm(driver, dayOfArrival, comment, amountOfDays, colorNumber);
+    public void finishOrderFormAboutRent(WebDriver driver, String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
+        completeFormAboutRent(driver, dayOfArrival, comment, amountOfDays, colorNumber);
         driver.findElement(btnMiddleOrder).click();
     }
 
     //Заказать скутер
     public String orderScooter(WebDriver driver, String name, String surname, String city, int stationNumber, String phone,
                                String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
-        finishOrderFormOne(driver, name, surname, city, stationNumber, phone);
-        finishOrderFormTwo(driver, dayOfArrival, comment, amountOfDays, colorNumber);
+        finishOrderFormOfTheSectionForWhomTheScooter(driver, name, surname, city, stationNumber, phone);
+        finishOrderFormAboutRent(driver, dayOfArrival, comment, amountOfDays, colorNumber);
         //Баг в chrome: хром не может кликнуть по кнопке "Да", вместо этого он просто наводится на неё
         driver.findElement(btnYes).click();
         String actualResult = driver.findElement(orderIsProcessed).getText();
