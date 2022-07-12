@@ -23,7 +23,7 @@ public class ScooterOrderTest {
     }
 
     @Test
-    public void fillInTheSectionForWhomTheScooterAndAboutRent() {
+    public void clickBtnHeaderOrderAndfillInTheSectionForWhomTheScooterAndAboutRent() {
         //Данные для формы 1
         String name = "Антон";
         String surname = "Андреевич";
@@ -45,7 +45,7 @@ public class ScooterOrderTest {
     }
 
     @Test
-    public void fillInTheSectionForWhomTheScooterAndAboutRentWithOtherDetails() {
+    public void clickBtnMiddleOrderfillInTheSectionForWhomTheScooterAndAboutRentWithOtherDetails() {
         //Данные для формы 1
         String name = "Андрей";
         String surname = "Вячеславович";
