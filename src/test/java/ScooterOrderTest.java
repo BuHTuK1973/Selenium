@@ -38,8 +38,8 @@ public class ScooterOrderTest {
         int colorNumber = 0;
 
         String expectedResult = "Заказ оформлен";
-       HomePageScooter homePageScooter = new HomePageScooter();
-        String actualResult = homePageScooter.clickBtnHeaderOrder(driver).orderScooter(driver, name, surname, city, stationNumber, phone,
+       HomePageScooter homePageScooter = new HomePageScooter(driver);
+        String actualResult = homePageScooter.clickBtnHeaderOrder().orderScooter(name, surname, city, stationNumber, phone,
                 dayOfArrival, comment, amountOfDays, colorNumber);
         MatcherAssert.assertThat("Заголовок окна успешного офрмления заказа должен не соответвует ожидаемому. Ожидаемый заголовок: Заказ оформлен", actualResult, containsString(expectedResult));
     }
@@ -60,8 +60,8 @@ public class ScooterOrderTest {
         int colorNumber = 1;
 
         String expectedResult = "Заказ оформлен";
-        HomePageScooter homePageScooter = new HomePageScooter();
-        String actualResult = homePageScooter.clickBtnMiddleOrder(driver).orderScooter(driver, name, surname, city, stationNumber, phone,
+        HomePageScooter homePageScooter = new HomePageScooter(driver);
+        String actualResult = homePageScooter.clickBtnMiddleOrder().orderScooter(name, surname, city, stationNumber, phone,
                 dayOfArrival, comment, amountOfDays, colorNumber);
         MatcherAssert.assertThat("Заголовок окна успешного офрмления заказа должен не соответвует ожидаемому. Ожидаемый заголовок: Заказ оформлен", actualResult, containsString(expectedResult));
     }

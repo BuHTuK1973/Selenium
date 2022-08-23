@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import java.util.List;
 
 public class OrderPage {
+    private final WebDriver driver;
     //Первая форма
     //локатор поля Имя
     private final By inputName = By.xpath(".//input[@placeholder='* Имя']");
@@ -39,8 +40,12 @@ public class OrderPage {
     //локатор окошка Заказ оформлен
     private final By orderIsProcessed = By.xpath(".//div[text()='Заказ оформлен']");
 
+    public OrderPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
-    public void setSubway(WebDriver driver, int stationNumber) {
+
+    public void setSubway(int stationNumber) {
         driver.findElement(inputSubway).click();
         WebElement element = driver.findElement(By.cssSelector("button[value = '" + stationNumber + "']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
@@ -48,21 +53,21 @@ public class OrderPage {
     }
 
     //Заполнить поля раздела "Для кого самокат"
-    public void completeFormOfTheSectionForWhomTheScooter(WebDriver driver, String name, String surname, String city, int stationNumber, String phone) {
+    public void completeFormOfTheSectionForWhomTheScooter(String name, String surname, String city, int stationNumber, String phone) {
         driver.findElement(inputName).sendKeys(name);
         driver.findElement(inputSurname).sendKeys(surname);
         driver.findElement(inputAddress).sendKeys(city);
-        setSubway(driver, stationNumber);
+        setSubway(stationNumber);
         driver.findElement(inputPhone).sendKeys(phone);
     }
 
-    public void finishOrderFormOfTheSectionForWhomTheScooter(WebDriver driver, String name, String surname, String city, int stationNumber, String phone) {
-        completeFormOfTheSectionForWhomTheScooter(driver, name, surname, city, stationNumber, phone);
+    public void finishOrderFormOfTheSectionForWhomTheScooter(String name, String surname, String city, int stationNumber, String phone) {
+        completeFormOfTheSectionForWhomTheScooter(name, surname, city, stationNumber, phone);
         driver.findElement(btnNext).click();
     }
 
     //Выбираем значение из списка Срок аренды n-1
-    public void selectRentalPeriodOption(WebDriver driver, int amountOfDays) {
+    public void selectRentalPeriodOption(int amountOfDays) {
         driver.findElement(rentalPeriod).click();
         List<WebElement> elements = driver.findElements(rentalPeriodOptions);
         WebElement element = elements.get(amountOfDays);
@@ -72,36 +77,35 @@ public class OrderPage {
     }
 
     //кликаем по чебкосу цвета (один из двух): 0 = черный, 1 = серый
-    public void clickRentalPeriod(WebDriver driver, int colorNumber) {
+    public void clickRentalPeriod(int colorNumber) {
             List<WebElement> elements = driver.findElements(scooterColorChekboxes);
             WebElement element = elements.get(colorNumber);
             element.click();
     }
 
     //Заполняем форму 2 значениями
-    public void completeFormAboutRent(WebDriver driver, String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
+    public void completeFormAboutRent(String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
         driver.findElement(inputWhen).sendKeys(dayOfArrival);
         driver.findElement(inputWhen).sendKeys(Keys.ESCAPE);
         driver.findElement(inputComment).sendKeys(comment);
-        selectRentalPeriodOption(driver, amountOfDays);
-        clickRentalPeriod(driver, colorNumber);
+        selectRentalPeriodOption(amountOfDays);
+        clickRentalPeriod(colorNumber);
     }
 
     //заказать
-    public void finishOrderFormAboutRent(WebDriver driver, String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
-        completeFormAboutRent(driver, dayOfArrival, comment, amountOfDays, colorNumber);
+    public void finishOrderFormAboutRent(String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
+        completeFormAboutRent(dayOfArrival, comment, amountOfDays, colorNumber);
         driver.findElement(btnMiddleOrder).click();
     }
 
     //Заказать скутер
-    public String orderScooter(WebDriver driver, String name, String surname, String city, int stationNumber, String phone,
+    public String orderScooter(String name, String surname, String city, int stationNumber, String phone,
                                String dayOfArrival, String comment, int amountOfDays, int colorNumber) {
-        finishOrderFormOfTheSectionForWhomTheScooter(driver, name, surname, city, stationNumber, phone);
-        finishOrderFormAboutRent(driver, dayOfArrival, comment, amountOfDays, colorNumber);
+        finishOrderFormOfTheSectionForWhomTheScooter(name, surname, city, stationNumber, phone);
+        finishOrderFormAboutRent(dayOfArrival, comment, amountOfDays, colorNumber);
         //Баг в chrome: хром не может кликнуть по кнопке "Да", вместо этого он просто наводится на неё
         driver.findElement(btnYes).click();
-        String actualResult = driver.findElement(orderIsProcessed).getText();
-        return actualResult;
+        return driver.findElement(orderIsProcessed).getText();
     }
 
 

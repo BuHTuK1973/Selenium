@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class HomePageScooter {
+    private final WebDriver driver;
     public static final String URL = "https://qa-scooter.praktikum-services.ru/";
     //        [ ]  Картинка-логотип самоката.
     private final By logoMain = By.className("Header_Logo__23yGT");
@@ -124,149 +125,153 @@ public class HomePageScooter {
     //            [ ]  Ответ на вопрос №8. "Да, обязательно. Всем самокатов! И Москве, и Московской области."
     private final By answerTheQuestionILeaveBehindTheMKADWillYouBringMe = By.id("accordion__panel-7");
 
-    public void scrollSubHeaderForScroll(WebDriver driver) {
+    public HomePageScooter(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void scrollSubHeaderForScroll() {
 
         WebElement element = driver.findElement(subHeaderForScroll);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
 
     }
 
-    public void clickQuestionHowMuchDoesItCoast(WebDriver driver) { driver.findElement(questionHowMuchDoesItCoast).click(); }
+    public void clickQuestionHowMuchDoesItCoast() { driver.findElement(questionHowMuchDoesItCoast).click(); }
 
-    public String getTextOfAnswerTheQuestionHowMuchDoesItCoast(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionHowMuchDoesItCoast() {
         return driver.findElement(answerTheQuestionHowMuchDoesItCoast).getText();
     }
 
-    public String textOfAnswerTheQuestionHowMuchDoesItCoast(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionHowMuchDoesItCoast(driver);
+    public String textOfAnswerTheQuestionHowMuchDoesItCoast() {
+        scrollSubHeaderForScroll();
+        clickQuestionHowMuchDoesItCoast();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionHowMuchDoesItCoast));
-        return getTextOfAnswerTheQuestionHowMuchDoesItCoast(driver);
+        return getTextOfAnswerTheQuestionHowMuchDoesItCoast();
     }
 
-    public void clickQuestionIWantSeveralScooterAtOnce(WebDriver driver) {
+    public void clickQuestionIWantSeveralScooterAtOnce() {
         driver.findElement(questionIWantSeveralScooterAtOnce).click();
     }
 
-    public String getTextOfAnswerTheQuestionIWantSeveralScooterAtOnce(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionIWantSeveralScooterAtOnce() {
         return driver.findElement(answerTheQuestionIWantSeveralScooterAtOnce).getText();
     }
 
-    public String textOfAnswerTheQuestionIWantSeveralScooterAtOnce(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionIWantSeveralScooterAtOnce(driver);
+    public String textOfAnswerTheQuestionIWantSeveralScooterAtOnce() {
+        scrollSubHeaderForScroll();
+        clickQuestionIWantSeveralScooterAtOnce();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionIWantSeveralScooterAtOnce));
-        return getTextOfAnswerTheQuestionIWantSeveralScooterAtOnce(driver);
+        return getTextOfAnswerTheQuestionIWantSeveralScooterAtOnce();
     }
 
-    public void clickQuestionHowTheRentalTimeIsCalculated(WebDriver driver) {
+    public void clickQuestionHowTheRentalTimeIsCalculated() {
         driver.findElement(questionHowTheRentalTimeIsCalculated).click();
     }
 
-    public String getTextOfAnswerTheQuestionHowTheRentalTimeIsCalculated(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionHowTheRentalTimeIsCalculated() {
         return driver.findElement(answerTheQuestionHowTheRentalTimeIsCalculated).getText();
     }
 
-    public String textOfAnswerTheQuestionHowTheRentalTimeIsCalculated(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionHowTheRentalTimeIsCalculated(driver);
+    public String textOfAnswerTheQuestionHowTheRentalTimeIsCalculated() {
+        scrollSubHeaderForScroll();
+        clickQuestionHowTheRentalTimeIsCalculated();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionHowTheRentalTimeIsCalculated));
-        return getTextOfAnswerTheQuestionHowTheRentalTimeIsCalculated(driver);
+        return getTextOfAnswerTheQuestionHowTheRentalTimeIsCalculated();
     }
 
-    public void clickQuestionIsItPossibleToOrderAScooterRightForToday(WebDriver driver) {
+    public void clickQuestionIsItPossibleToOrderAScooterRightForToday() {
         driver.findElement(questionIsItPossibleToOrderAScooterRightForToday).click();
     }
 
-    public String getTextOfAnswerTheQuestionIsItPossibleToOrderAScooterRightForToday(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionIsItPossibleToOrderAScooterRightForToday() {
         return driver.findElement(answerTheQuestionIsItPossibleToOrderAScooterRightForToday).getText();
     }
 
-    public String textOfAnswerTheQuestionIsItPossibleToOrderAScooterRightForToday(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionIsItPossibleToOrderAScooterRightForToday(driver);
+    public String textOfAnswerTheQuestionIsItPossibleToOrderAScooterRightForToday() {
+        scrollSubHeaderForScroll();
+        clickQuestionIsItPossibleToOrderAScooterRightForToday();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionIsItPossibleToOrderAScooterRightForToday));
-        return getTextOfAnswerTheQuestionIsItPossibleToOrderAScooterRightForToday(driver);
+        return getTextOfAnswerTheQuestionIsItPossibleToOrderAScooterRightForToday();
     }
 
-    public void clickQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier(WebDriver driver) {
+    public void clickQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier() {
         driver.findElement(questionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier).click();
     }
 
-    public String getTextOfAnswerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier() {
         return driver.findElement(answerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier).getText();
     }
 
-    public String textOfAnswerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier(driver);
+    public String textOfAnswerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier() {
+        scrollSubHeaderForScroll();
+        clickQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier));
-        return getTextOfAnswerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier(driver);
+        return getTextOfAnswerTheQuestionIsItPossibleToExtendTheOrderOrReturnTheScooterEarlier();
     }
 
-    public void clickQuestionYouBringTheChargingAlongWithTheScooter(WebDriver driver) {
+    public void clickQuestionYouBringTheChargingAlongWithTheScooter() {
         driver.findElement(questionYouBringTheChargingAlongWithTheScooter).click();
     }
 
-    public String getTextOfAnswerTheQuestionYouBringTheChargingAlongWithTheScooter(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionYouBringTheChargingAlongWithTheScooter() {
         return driver.findElement(answerTheQuestionYouBringTheChargingAlongWithTheScooter).getText();
     }
 
-    public String textOfAnswerTheQuestionYouBringTheChargingAlongWithTheScooter(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionYouBringTheChargingAlongWithTheScooter(driver);
+    public String textOfAnswerTheQuestionYouBringTheChargingAlongWithTheScooter() {
+        scrollSubHeaderForScroll();
+        clickQuestionYouBringTheChargingAlongWithTheScooter();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionYouBringTheChargingAlongWithTheScooter));
-        return getTextOfAnswerTheQuestionYouBringTheChargingAlongWithTheScooter(driver);
+        return getTextOfAnswerTheQuestionYouBringTheChargingAlongWithTheScooter();
     }
 
-    public void clickQuestionIsItPossibleToCancelTheOrder(WebDriver driver) {
+    public void clickQuestionIsItPossibleToCancelTheOrder() {
         driver.findElement(questionIsItPossibleToCancelTheOrder).click();
     }
 
-    public String getTextOfAnswerTheQuestionIsItPossibleToCancelTheOrder(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionIsItPossibleToCancelTheOrder() {
         return driver.findElement(answerTheQuestionIsItPossibleToCancelTheOrder).getText();
     }
 
-    public String textOfAnswerTheQuestionIsItPossibleToCancelTheOrder(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionIsItPossibleToCancelTheOrder(driver);
+    public String textOfAnswerTheQuestionIsItPossibleToCancelTheOrder() {
+        scrollSubHeaderForScroll();
+        clickQuestionIsItPossibleToCancelTheOrder();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionIsItPossibleToCancelTheOrder));
-        return getTextOfAnswerTheQuestionIsItPossibleToCancelTheOrder(driver);
+        return getTextOfAnswerTheQuestionIsItPossibleToCancelTheOrder();
     }
 
-    public void clickQuestionILeaveBehindTheMKADWillYouBringMe(WebDriver driver) {
+    public void clickQuestionILeaveBehindTheMKADWillYouBringMe() {
         driver.findElement(questionILeaveBehindTheMKADWillYouBringMe).click();
     }
 
-    public String getTextOfAnswerTheQuestionILeaveBehindTheMKADWillYouBringMe(WebDriver driver) {
+    public String getTextOfAnswerTheQuestionILeaveBehindTheMKADWillYouBringMe() {
         return driver.findElement(answerTheQuestionILeaveBehindTheMKADWillYouBringMe).getText();
     }
 
-    public String textOfAnswerTheQuestionILeaveBehindTheMKADWillYouBringMe(WebDriver driver) {
-        scrollSubHeaderForScroll(driver);
-        clickQuestionILeaveBehindTheMKADWillYouBringMe(driver);
+    public String textOfAnswerTheQuestionILeaveBehindTheMKADWillYouBringMe() {
+        scrollSubHeaderForScroll();
+        clickQuestionILeaveBehindTheMKADWillYouBringMe();
         new WebDriverWait(driver, 1)
                 .until(ExpectedConditions.visibilityOfElementLocated(answerTheQuestionILeaveBehindTheMKADWillYouBringMe));
-        return getTextOfAnswerTheQuestionILeaveBehindTheMKADWillYouBringMe(driver);
+        return getTextOfAnswerTheQuestionILeaveBehindTheMKADWillYouBringMe();
 
     }
 
-    public OrderPage clickBtnHeaderOrder(WebDriver driver) {
+    public OrderPage clickBtnHeaderOrder() {
         driver.findElement(btnHeaderOrder).click();
-        return new OrderPage();
+        return new OrderPage(driver);
     }
 
-    public OrderPage clickBtnMiddleOrder(WebDriver driver) {
+    public OrderPage clickBtnMiddleOrder() {
         WebElement element = driver.findElement(btnMiddleOrder);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
         element.click();
-        return new OrderPage();
+        return new OrderPage(driver);
     }
 }
